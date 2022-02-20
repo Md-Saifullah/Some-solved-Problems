@@ -1,0 +1,82 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,x,a,odd=0,even=0,f=0;
+        cin>>n>>x;
+        while(n--)
+        {
+            cin>>a;
+            if(a%2)
+                odd++;
+            else
+                even++;
+        }
+        if(odd==0)
+        {
+            f=0;
+        }
+        else if(even==0)
+        {
+            if(x%2)
+            {
+                f=1;
+            }
+            else
+            {
+                f=0;
+            }
+        }
+        else
+        {
+            odd--;
+            x--;
+            if(x<=even)
+            {
+                f=1;
+            }
+            else
+            {
+                if(x%2)
+                {
+                    if(even%2)
+                    {
+                        x-=even;
+                    }
+                    else
+                    {
+                        x-=(even-1);
+                    }
+                }
+                else
+                {
+                    if(even%2)
+                    {
+                        x-=(even-1);
+                    }
+                    else
+                    {
+                        x-=even;
+                    }
+                }
+                if(x>odd)
+                {
+                    f=0;
+                }
+                else
+                {
+                    f=1;
+                }
+            }
+        }
+        if(f)
+            cout<<"YES\n";
+        else
+            cout<<"NO\n";
+    }
+    return 0;
+}
